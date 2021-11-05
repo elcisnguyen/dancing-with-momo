@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rigidBody.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
+
         //Condition to restart the level
         //if (rb.position.y < 0f)
         //{
@@ -47,6 +48,9 @@ public class PlayerMovement : MonoBehaviour
         //    playerMovement.enabled = false; //Make player stop moving when collision happens
         //    FindObjectOfType<GameManager>().EndGame();
         //}
+        if (collision.collider.name == "Ground")
+            FindObjectOfType<GameManager>().CompleteLevel();
+
         Debug.Log("COLLISION!");
         rigidBody.velocity = Vector3.zero;
         rigidBody.AddForce(0, forwardForce, upwardForce, ForceMode.VelocityChange);
