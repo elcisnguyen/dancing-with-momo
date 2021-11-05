@@ -6,15 +6,11 @@ public class PlayerMovement : MonoBehaviour
     public float forwardForce = 2000f;
     public float sidewaysForce = 500f;
   
-    void Start()
-    {
-        //rb.AddForce(0, 500, 200);
-    }
     // Update is called once per frame
     void FixedUpdate()
     {
         //Add a forward force
-        rb.AddForce(0, 0, forwardForce * Time.deltaTime);
+        //rb.AddForce(0, 0, forwardForce * Time.deltaTime);
 
         if (Input.GetKey("d"))
         {
@@ -24,10 +20,11 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
-        if (rb.position.y < 0f)
-        {
-            FindObjectOfType<GameManager>().EndGame();
-        }
+        //Condition to restart the level
+        //if (rb.position.y < 0f)
+        //{
+        //    FindObjectOfType<GameManager>().EndGame();
+        //}
 
     }
 }
